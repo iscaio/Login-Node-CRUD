@@ -15,7 +15,7 @@ const app = express();
 app.use(express.json());
 app.use(logger);
 
-app.use("/api", publicRouter);
-app.use("/api", auth, privateRouter);
+app.use("/api/v1", publicRouter);
+app.use("/api/v1", auth, privateRouter);
 
 module.exports = app;
