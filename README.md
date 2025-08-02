@@ -78,7 +78,9 @@ npm -- watch server.js
 ---
 
 ## Rotas da API (Prefixo: `/api/v1`)
-
+```bash
+http://localhost:3000
+```
 ### Públicas
 
 | Método | Rota               | Descrição              |
