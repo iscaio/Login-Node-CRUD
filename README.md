@@ -107,8 +107,7 @@ npm -- watch server.js
 - **Separação de responsabilidades:** rotas, controladores, modelos e middlewares bem definidos.
 - **Segurança:** senhas criptografadas com `bcrypt` e autenticação JWT.
 - **Variáveis de ambiente:** nunca exponha sua `JWT_SECRET` ou credenciais do banco.
-- **Testes:** considere adicionar testes automatizados com Jest ou Supertest. // Proxima atualização
-- **Modularização:** usar index.js nos diretórios para facilitar imports. // Proxima atualização
+- **Testes:** Adicionar testes automatizados com Jest ou Supertest. // Proxima atualização
 
 ---
 
