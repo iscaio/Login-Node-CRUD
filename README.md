@@ -1,68 +1,133 @@
-# Login-Node-CRUD
+# > Login Node CRUD API
 
-API RESTful em Node.js com Express, MongoDB e autenticação JWT.
+API RESTful de autenticação e gerenciamento de usuários com Node.js, Express, MongoDB e autenticação via JWT.  
+Ideal para projetos que exigem controle de acesso e operações básicas de CRUD.
 
-## Funcionalidades
-
-- Cadastro de usuários com senha criptografada
-- Login com geração de token JWT
-- Listagem, atualização e remoção de usuários
-- Rotas públicas e privadas protegidas por autenticação
-
-## Tecnologias
+## Tecnologias Utilizadas
 
 - Node.js
-- Express
-- MongoDB (Mongoose)
-- JWT (jsonwebtoken)
+- Express.js
+- MongoDB + Mongoose
+- JWT (Json Web Token)
+- Dotenv
 - Bcrypt
-
-## Como rodar o projeto
-
-1. **Clone o repositório**
-
-   ```
-   git clone https://github.com/iscaio/Login-Node-CRUD.git
-   cd Login-Node-CRUD
-   ```
-
-2. **Instale as dependências**
-
-   ```
-   npm install
-   ```
-
-3. **Configure as variáveis de ambiente**
-   Crie um arquivo `.env` na raiz do projeto com:
-
-   ```
-   MONGODB_URI=seu_mongodb_uri
-   JWT_SECRET=sua_chave_secreta
-   ```
-
-4. **Inicie o servidor**
-   ```
-   npm start
-   ```
-   O servidor irá rodar na porta 3000 por padrão.
-
-## Rotas principais
-
-- `POST /api/register` — Cadastro de usuário
-- `POST /api/login` — Login e geração de token
-
-### Rotas privadas (necessário JWT no header Authorization)
-
-- `GET /api/list-users` — Listar todos os usuários
-- `GET /api/list-user/:id` — Buscar usuário por ID
-- `PATCH /api/update-user/:id` — Atualizar usuário por ID
-- `DELETE /api/delete-user/:id` — Remover usuário por ID
-
-## Observações
-
-- Para acessar rotas privadas, inclua o token JWT no header `Authorization`.
-- Não exponha sua chave JWT ou URI do banco de dados publicamente.
+- Nodemon (desenvolvimento)
 
 ---
 
-Feito por [Caio Andrade](https://github.com/iscaio)
+## Estrutura de Pastas
+
+---
+
+📦 Login-Node-CRUD
+├── 📁 src
+│ ├── 📁 config
+│ │ └── db.js # Conexão com o MongoDB usando Mongoose
+│ │
+│ ├── 📁 controllers
+│ │ ├── auth.controller.js # Lógica de cadastro e login
+│ │ └── user.controller.js # Lógica de CRUD dos usuários
+│ │
+│ ├── 📁 middlewares
+│ │ └── auth.middleware.js # Middleware para proteger rotas privadas com JWT
+│ │
+│ ├── 📁 models
+│ │ └── user.model.js # Schema do usuário (Mongoose)
+│ │
+│ ├── 📁 routes
+│ │ ├── public.routes.js # Rotas públicas (cadastro, login)
+│ │ └── private.routes.js # Rotas protegidas (CRUD de usuários)
+│ │
+│ └── 📄 app.js # Arquivo principal da aplicação Express
+│
+├── 📄 server.js # Inicializa e escuta o servidor na porta definida
+├── 📄 .env # Variáveis de ambiente (MongoDB, JWT_SECRET, etc)
+├── 📄 .gitignore # Ignora node_modules, .env, etc.
+├── 📄 package.json # Dependências e scripts do projeto
+
+---
+
+## Como Rodar o Projeto Localmente
+
+1. **Clone o repositório:**
+
+```bash
+git clone https://github.com/iscaio/Login-Node-CRUD.git
+cd Login-Node-CRUD
+```
+
+2. **Instale as dependências:**
+
+```bash
+npm install
+```
+
+3. **Configure o arquivo `.env`:**
+
+Crie um arquivo `.env` com:
+
+```env
+MONGODB_USERNAME=seu_usuario
+MONGODB_PASSWORD=sua_senha
+JWT_SECRET=sua_chave_secreta
+```
+
+4. **Execute o projeto:**
+
+```bash
+npm -- watch server.js
+```
+
+---
+
+## Rotas da API (Prefixo: `/api/v1`)
+
+### Públicas
+
+| Método | Rota               | Descrição              |
+| ------ | ------------------ | ---------------------- |
+| POST   | `/api/v1/cadastro` | Cadastrar novo usuário |
+| POST   | `/api/v1/login`    | Autenticar usuário     |
+
+### Privadas (requer token JWT)
+
+| Método | Rota                | Descrição                |
+| ------ | ------------------- | ------------------------ |
+| GET    | `/api/v1/users`     | Listar todos os usuários |
+| GET    | `/api/v1/users/:id` | Obter usuário por ID     |
+| PUT    | `/update-user/:id`  | Atualizar usuário        |
+| DELETE | `/delete-user/:id`  | Deletar usuário          |
+
+> Use o token JWT no header: `Authorization: Bearer <token>`
+
+---
+
+## Boas Práticas e Sugestões
+
+- **Separação de responsabilidades:** rotas, controladores, modelos e middlewares bem definidos.
+- **Segurança:** senhas criptografadas com `bcrypt` e autenticação JWT.
+- **Variáveis de ambiente:** nunca exponha sua `JWT_SECRET` ou credenciais do banco.
+- **Testes:** considere adicionar testes automatizados com Jest ou Supertest. // Proxima atualização
+- **Modularização:** usar index.js nos diretórios para facilitar imports. // Proxima atualização
+
+---
+
+## Em Desenvolvimento | Proximas Atualizações
+
+- ✅ CRUD de usuários
+- ✅ Autenticação JWT
+- 🚧 Sistema de permissões por hierarquia (adm, user)
+- 🚧 Testes automatizados
+- 🚧 Documentação Swagger
+
+---
+
+## ✨ Autor
+
+Feito por [Caio Andrade (@iscaio)](https://github.com/iscaio)
+
+---
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
