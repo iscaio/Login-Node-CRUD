@@ -16,7 +16,9 @@ exports.register = async (req, res) => {
       email: user.email,
       password: hashPassword,
     });
-    res.status(201).json(userDB);
+    res
+      .status(201)
+      .json({ message: "Usuário criado com sucesso", user: userDB });
   } catch (error) {
     res.status(500).send(error.message);
   }
@@ -35,8 +37,10 @@ exports.login = async (req, res) => {
         .status(401)
         .json({ message: "Senha invalida, tente novamente!" });
     }
-    const token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: "1m" });
-    res.status(200).json({ token });
+    const token = jwt.sign({ id: user.id, nome: user.nome }, JWT_SECRET, {
+      expiresIn: "1d",
+    });
+    res.status(200).json({ message: `Bem-vindo, ${user.nome}`, token });
   } catch (error) {
     res.status(500).json({ message: "Erro do servidor, tente novamente!" });
   }

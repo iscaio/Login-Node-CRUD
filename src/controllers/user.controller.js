@@ -2,9 +2,9 @@ const UserModel = require("../models/user.model");
 
 exports.allUsers = async (req, res) => {
   try {
-    const users = await UserModel.find({});
+    const users = await UserModel.find({}, { password: 0 }); // exclue a senha do retorno
 
-    res.status(200).json(users);
+    res.status(200).json({ Message: "Lista de Usuários", users });
   } catch (error) {
     return res.status(500).send(error.message);
   }
