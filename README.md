@@ -120,7 +120,7 @@ http://localhost:3000
 
 ---
 
-## ✨ Autor
+##  Autor
 
 Feito por [Caio Andrade (@iscaio)](https://github.com/iscaio)
 
