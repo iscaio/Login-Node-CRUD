@@ -114,6 +114,7 @@ http://localhost:3000
 
 - ✅ CRUD de usuários
 - ✅ Autenticação JWT
+- 🚧 Middleware de erro
 - 🚧 Sistema de permissões por hierarquia (adm, user)
 - 🚧 Testes automatizados
 - 🚧 Documentação Swagger
