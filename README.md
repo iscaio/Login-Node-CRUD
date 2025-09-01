@@ -19,31 +19,27 @@ Ideal para projetos que exigem controle de acesso e operações básicas de CRUD
 
 ---
 
+```plaintext
 📦 Login-Node-CRUD
 ├── 📁 src
-│ ├── 📁 config
-│ │ └── db.js # Conexão com o MongoDB usando Mongoose
-│ │
-│ ├── 📁 controllers
-│ │ ├── auth.controller.js # Lógica de cadastro e login
-│ │ └── user.controller.js # Lógica de CRUD dos usuários
-│ │
-│ ├── 📁 middlewares
-│ │ └── auth.middleware.js # Middleware para proteger rotas privadas com JWT
-│ │
-│ ├── 📁 models
-│ │ └── user.model.js # Schema do usuário (Mongoose)
-│ │
-│ ├── 📁 routes
-│ │ ├── public.routes.js # Rotas públicas (cadastro, login)
-│ │ └── private.routes.js # Rotas protegidas (CRUD de usuários)
-│ │
-│ └── 📄 app.js # Arquivo principal da aplicação Express
-│
-├── 📄 server.js # Inicializa e escuta o servidor na porta definida
-├── 📄 .env # Variáveis de ambiente (MongoDB, JWT_SECRET, etc)
-├── 📄 .gitignore # Ignora node_modules, .env, etc.
-├── 📄 package.json # Dependências e scripts do projeto
+│   ├── 📁 config
+│   │   └── db.js                 # Conexão com o MongoDB usando Mongoose
+│   ├── 📁 controllers
+│   │   ├── auth.controller.js    # Lógica de cadastro e login
+│   │   └── user.controller.js    # Lógica de CRUD dos usuários
+│   ├── 📁 middlewares
+│   │   └── auth.middleware.js    # Middleware para proteger rotas privadas com JWT
+│   ├── 📁 models
+│   │   └── user.model.js         # Schema do usuário (Mongoose)
+│   ├── 📁 routes
+│   │   ├── public.routes.js      # Rotas públicas (cadastro, login)
+│   │   └── private.routes.js     # Rotas protegidas (CRUD de usuários)
+│   └── app.js                    # Arquivo principal da aplicação Express
+├── server.js                     # Inicializa e escuta o servidor
+├── .env                          # Variáveis de ambiente (MongoDB, JWT_SECRET, etc)
+├── .gitignore                    # Ignora node_modules, .env, etc
+└── package.json                 # Dependências e scripts do projeto
+```
 
 ---
 
@@ -82,6 +78,10 @@ npm -- watch server.js
 
 ## Rotas da API (Prefixo: `/api/v1`)
 
+```bash
+http://localhost:3000
+```
+
 ### Públicas
 
 | Método | Rota               | Descrição              |
@@ -117,7 +117,7 @@ npm -- watch server.js
 - ✅ Autenticação JWT
 - 🚧 Sistema de permissões por hierarquia (adm, user)
 - 🚧 Testes automatizados
-- 🚧 Documentação Swagger
+- ✅ Documentação Swagger
 
 ---
 

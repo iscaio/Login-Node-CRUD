@@ -1,8 +1,8 @@
-const UserModel = require("../models/user.model");
+const userModel = require("../models/user.model");
 
 exports.allUsers = async (req, res) => {
   try {
-    const users = await UserModel.find({}, { password: 0 }); // exclue a senha do retorno
+    const users = await userModel.find({}, { password: 0 }); // exclue a senha do retorno
 
     res.status(200).json({ Message: "Lista de Usuários", users });
   } catch (error) {
@@ -14,7 +14,7 @@ exports.getById = async (req, res) => {
   try {
     const id = req.params.id;
 
-    const user = await UserModel.findById(id);
+    const user = await userModel.findById(id);
 
     return res.status(200).json(user);
   } catch (error) {
@@ -26,7 +26,7 @@ exports.updateUser = async (req, res) => {
   try {
     const id = req.params.id;
 
-    const user = await UserModel.findByIdAndUpdate(id, req.body, { new: true });
+    const user = await userModel.findByIdAndUpdate(id, req.body, { new: true });
 
     res.status(200).json(user);
   } catch (error) {
@@ -37,7 +37,7 @@ exports.updateUser = async (req, res) => {
 exports.deleteUser = async (req, res) => {
   try {
     const id = req.params.id;
-    const user = await UserModel.findByIdAndDelete(id);
+    const user = await userModel.findByIdAndDelete(id);
 
     res.status(200).json(user);
   } catch (error) {
