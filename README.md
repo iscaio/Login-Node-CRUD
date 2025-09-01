@@ -81,6 +81,11 @@ npm -- watch server.js
 ```bash
 http://localhost:3000
 ```
+## Documentação Swagger
+```bash
+http://localhost:3000/api-docs/
+```
+
 ### Públicas
 
 | Método | Rota               | Descrição              |
